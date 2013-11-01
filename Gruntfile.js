@@ -193,7 +193,7 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
-            '*.{ico,png,txt}',
+            'config.xml',
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
@@ -253,6 +253,15 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    compass: {
+      dist: {
+        options: {
+            sassDir: 'app/sass',
+            cssDir: 'www/styles',
+            environment: 'production'
+        }
+      }
     }
   });
 
@@ -285,8 +294,8 @@ module.exports = function (grunt) {
     'autoprefixer',
     'concat',
     'copy:dist',
+    'compass:dist',
     'ngmin',
-    'cssmin',
     'uglify',
     'rev',
     'usemin'
