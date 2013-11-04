@@ -4,7 +4,7 @@
 - SASS
 
 ## Starter command
-- Run `sh init.sh` to create neccessory directory for phonegap
+- Run `sh scripts/init.sh` to create neccessory directory for phonegap
 
 
 ## Development
