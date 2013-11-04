@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     watch: {
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['copy:styles', 'autoprefixer']
+        tasks: ['copy:styles', 'compass:dev', 'autoprefixer']
       },
       livereload: {
         options: {
@@ -261,6 +261,13 @@ module.exports = function (grunt) {
             cssDir: 'www/styles',
             environment: 'production'
         }
+      },
+      dev: {
+        options: {
+            sassDir: 'app/sass',
+            cssDir: 'app/styles',
+            environment: 'production'
+        }
       }
     }
   });
@@ -275,6 +282,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
+      'compass:dev',
       'watch'
     ]);
   });
@@ -282,6 +290,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
+    'compass:dev',
     'autoprefixer',
     'connect:test',
     'karma'
